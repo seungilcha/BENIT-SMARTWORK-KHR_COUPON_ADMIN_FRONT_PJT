@@ -1,0 +1,169 @@
+/* variables.css */
+:root {
+  /* 🎨 색상 변수 */
+  --primary-color: #183322;
+  --secondary-color: #edf3ef;
+  --LightGray-color: #f3f3f3;
+  --lineStroke-color: #cecece;
+  --GrayHintText-color: #c2c2c2;
+  --Gray-color: #9b9b9b;
+
+  /* 🌄 배경 & 텍스트 색상 */
+  --white-color: #ffffff;
+  --fontbk-color: #1c1c1c;
+
+  /* 🌓 다크 모드 색상 */
+  --dark-bg-color: #1e1e1e;
+  --dark-text-color: #ffffff;
+
+  /* 🖋️ 폰트 */
+  --font-primary: "Inter", Arial, sans-serif;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 20px;
+  --font-weight-light: normal;
+  --font-weight-regular: 500;
+  --font-weight-bold: bold;
+
+  /* 📐 레이아웃 & 여백 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --container-width: 1200px;
+
+  /* 📱 반응형 브레이크포인트 */
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 1024px;
+  --breakpoint-lg: 1280px;
+
+  /* 🔘 버튼 & UI 요소 */
+  --btn-padding: 7px 24px;
+  --btn-radius: 4px;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+
+  /* 🎬 애니메이션 & 전환 효과 */
+  --transition-fast: 0.2s ease-in-out;
+  --transition-medium: 0.2s ease-in-out;
+  --transition-slow: 0.2s ease-in-out;
+  --easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --easing-out: cubic-bezier(0, 0, 0.2, 1);
+  --easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 기본 초기화 스타일 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-primary);
+  line-height: 1.5;
+  background-color: var(--white-color);
+  color: var(--primary-color);
+}
+
+/* 기본 폰트 스타일 */
+body {
+  font-size: var(--font-size-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 기본 레이아웃 */
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 버튼 기본 스타일 */
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+/* 링크 기본 스타일 */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 리스트 기본 스타일 */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 이미지 기본 스타일 */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Flexbox 기본 정렬 */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 숨김 처리 */
+.hidden {
+  display: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+/* 텍스트 관련 */
+.text-center {
+  text-align: center;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+/* 여백 관련 */
+.mt-10 {
+  margin-top: 10px;
+}
+.mb-10 {
+  margin-bottom: 10px;
+}
+.ml-10 {
+  margin-left: 10px;
+}
+.mr-10 {
+  margin-right: 10px;
+}

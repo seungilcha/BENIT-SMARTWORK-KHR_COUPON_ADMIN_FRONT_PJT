@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Inter';
+  src:
+    url('NotoSansKR-Regular.woff2') format('woff2'),
+    url('NotoSansKR-Regular.woff') format('woff'),
+    url('NotoSansKR-Regular.ttf') format('truetype'),
+    url('NotoSansKR-Regular.svg#NotoSansKR-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src:
+    url('NotoSansKR-Medium.woff2') format('woff2'),
+    url('NotoSansKR-Medium.woff') format('woff'),
+    url('NotoSansKR-Medium.ttf') format('truetype'),
+    url('NotoSansKR-Medium.svg#NotoSansKR-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src:
+    url('NotoSansKR-Bold.woff2') format('woff2'),
+    url('NotoSansKR-Bold.woff') format('woff'),
+    url('NotoSansKR-Bold.ttf') format('truetype'),
+    url('NotoSansKR-Bold.svg#NotoSansKR-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
