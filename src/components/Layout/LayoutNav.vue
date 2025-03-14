@@ -12,6 +12,7 @@
           >
             <span class="nav-text">{{ item.text }}</span>
             <svg
+              v-if="item.subMenu"
               class="arrow-icon"
               :class="{ rotated: activeIndex === index }"
               xmlns="http://www.w3.org/2000/svg"
@@ -26,26 +27,60 @@
 
           <!-- 📌 2 Depth 메뉴 -->
           <transition name="slide">
-            <ul v-if="activeIndex === index" class="sub-nav-items">
+            <ul
+              v-if="activeIndex === index && item.subMenu"
+              class="sub-nav-items"
+            >
               <li
                 v-for="(subItem, subIndex) in item.subMenu"
                 :key="subIndex"
                 class="sub-nav-item"
               >
-                <a
-                  href="#"
+                <div
                   class="sub-nav-link"
                   :class="{ 'sub-active': selectedSubMenu === subItem }"
-                  @click.prevent="
-                    handleSubMenuClick(
-                      subItem,
-                      item.subMenuFiles[subIndex],
-                      item.fileName
-                    )
-                  "
+                  @click="handleSubMenuClick(subItem, item, subIndex)"
                 >
                   {{ subItem }}
-                </a>
+                </div>
+
+                <!-- 📌 3 Depth 메뉴 -->
+                <transition name="slide">
+                  <ul
+                    v-if="
+                      activeSubIndex === subIndex &&
+                      item.subSubMenu &&
+                      item.subSubMenu[subIndex]
+                    "
+                    class="sub-sub-nav-items"
+                  >
+                    <li
+                      v-for="(subSubItem, subSubIndex) in item.subSubMenu[
+                        subIndex
+                      ]"
+                      :key="subSubIndex"
+                      class="sub-sub-nav-item"
+                    >
+                      <a
+                        href="#"
+                        class="sub-sub-nav-link"
+                        :class="{
+                          'sub-sub-active': selectedSubSubMenu === subSubItem,
+                        }"
+                        @click.prevent="
+                          handleSubSubMenuClick(
+                            subSubItem,
+                            item,
+                            subIndex,
+                            subSubIndex
+                          )
+                        "
+                      >
+                        {{ subSubItem }}
+                      </a>
+                    </li>
+                  </ul>
+                </transition>
               </li>
             </ul>
           </transition>
@@ -58,169 +93,184 @@
   </aside>
 </template>
 
-<script>
-import BaseButton from "@/components/UI/BaseButton.vue"; // ✅ BaseButton 가져오기
-export default {
-  components: {
-    BaseButton, // ✅ BaseButton 등록
-  },
-  emits: ["update-content"], // ✅ App.vue로 데이터 전달을 위한 이벤트 정의
-  data() {
-    return {
-      activeIndex: null, // 🔹 현재 활성화된 1 Depth 메뉴 인덱스
-      selectedSubMenu: null, // 🔹 현재 선택된 2 Depth 메뉴
-      navItems: [
-        {
-          text: "시스템 관리",
-          fileName: "SysMgmt",
-          subMenu: [
-            "관리자 관리",
-            "관리자 메뉴 관리",
-            "로그관리",
-            "게시판 관리",
-            "언어관리",
-          ],
-          subMenuFiles: [
-            "page_Admin",
-            "page_AdminMenu",
-            "page_Logs",
-            "page_Board",
-            "page_Lang",
-          ],
-        },
-        {
-          text: "사이트 관리",
-          fileName: "SiteMgmt",
-          subMenu: [
-            "코드 관리",
-            "사용자 메뉴 관리",
-            "메인 관리",
-            "약관 관리",
-            "그룹사 사이트 관리",
-            "지도 관리",
-          ],
-          subMenuFiles: [
-            "page_Code",
-            "page_UserMenu",
-            "page_Main",
-            "page_Terms",
-            "page_GroupSite",
-            "page_Map",
-          ],
-        },
-        {
-          text: "게시판 관리",
-          fileName: "BoardMgmt",
-          subMenu: ["게시물관리", "미디어센터 관리"],
-          subMenuFiles: ["page_Posts", "page_Media"],
-        },
-        {
-          text: "배너 관리",
-          fileName: "BannerMgmt",
-          subMenu: ["배너 목록", "배너 등록/수정", "배너 삭제"],
-          subMenuFiles: ["page_List", "page_Edit", "page_Delete"],
-        },
-        {
-          text: "팝업 관리",
-          fileName: "PopupMgmt",
-          subMenu: ["팝업 목록", "팝업 등록/수정", "팝업 삭제"],
-          subMenuFiles: ["page_List", "page_Edit", "page_Delete"],
-        },
-        {
-          text: "배치/스케줄링 관리",
-          fileName: "BatchMgmt",
-          subMenu: ["배치/스케줄링 실행 내역 조회", "배치/스케줄링 수동 실행"],
-          subMenuFiles: ["page_History", "page_Manual"],
-        },
-        {
-          text: "알림 관리",
-          fileName: "NotifyMgmt",
-          subMenu: ["알림 내용 등록", "알림 전송 내역 조회"],
-          subMenuFiles: ["page_Create", "page_History"],
-        },
-        {
-          text: "메일컨텐츠 관리",
-          fileName: "MailMgmt",
-          subMenu: [
-            "메일내용 목록",
-            "메일내용 등록",
-            "메일내용 삭제",
-            "메일 발신관리",
-          ],
-          subMenuFiles: [
-            "page_List",
-            "page_Create",
-            "page_Delete",
-            "page_Send",
-          ],
-        },
-        {
-          text: "마케팅/홍보 관련",
-          fileName: "Marketing",
-          subMenu: ["SEO", "google analytics"],
-          subMenuFiles: ["page_SEO", "page_GA"],
-        },
-        {
-          text: "승인",
-          fileName: "Approval",
-          subMenu: null, // 🔹 2 Depth가 없으면 바로 페이지 로드
-        },
-        {
-          text: "이미지 관리",
-          fileName: "ImgMgmt",
-          subMenu: null, // 🔹 2 Depth가 없으면 바로 페이지 로드
-        },
-      ],
-    };
-  },
-  created() {
-    // 📌 기본으로 `page_Admin`이 보이도록 설정
-    const defaultFolder = "SysMgmt";
-    const defaultComponent = "page_Admin";
-    this.activeIndex = this.navItems.findIndex(
-      (item) => item.fileName === defaultFolder
-    );
-    this.selectedSubMenu = "관리자 관리";
+<script setup>
+import { ref, onMounted, defineEmits } from "vue";
+import BaseButton from "@/components/UI/BaseButton.vue";
 
-    this.$emit("update-content", {
-      folderName: defaultFolder,
-      componentName: defaultComponent,
+const emit = defineEmits(["update-content"]);
+
+const activeIndex = ref(null);
+const activeSubIndex = ref(null);
+const selectedSubMenu = ref(null);
+const selectedSubSubMenu = ref(null);
+
+const navItems = ref([
+  {
+    text: "시스템 관리",
+    fileName: "SysMgmt",
+    subMenu: [
+      "관리자 관리",
+      "관리자 메뉴 관리",
+      "로그관리",
+      "게시판 관리",
+      "언어관리",
+    ],
+    subMenuFiles: [
+      "page_Admin",
+      "page_AdminMenu",
+      "page_Logs",
+      "page_Board",
+      "page_Lang",
+    ],
+    subSubMenu: [
+      null, // 관리자 관리에는 3 Depth 없음
+      null, // 관리자 메뉴 관리에는 3 Depth 없음
+      ["접속로그", "이용로그", "메뉴권한변경로그"], // ✅ 로그관리에만 3 Depth 추가
+      null, // 게시판 관리에는 3 Depth 없음
+      null, // 언어 관리에는 3 Depth 없음
+    ],
+    subSubMenuFiles: [
+      null,
+      null,
+      ["page_AccessLog", "page_SystemLog", "page_ErrorLog"], // ✅ 로그관리의 3 Depth 파일명
+      null,
+      null,
+    ],
+  },
+  {
+    text: "사이트 관리",
+    fileName: "SiteMgmt",
+    subMenu: [
+      "코드 관리",
+      "사용자 메뉴 관리",
+      "메인 관리",
+      "약관 관리",
+      "그룹사 사이트 관리",
+      "지도 관리",
+    ],
+    subMenuFiles: [
+      "page_Code",
+      "page_UserMenu",
+      "page_Main",
+      "page_Terms",
+      "page_GroupSite",
+      "page_Map",
+    ],
+  },
+  {
+    text: "게시판 관리",
+    fileName: "BoardMgmt",
+    subMenu: ["게시물관리", "미디어센터 관리"],
+    subMenuFiles: ["page_Posts", "page_Media"],
+  },
+  {
+    text: "배너 관리",
+    fileName: "BannerMgmt",
+    subMenu: ["배너 목록", "배너 등록/수정", "배너 삭제"],
+    subMenuFiles: ["page_List", "page_Edit", "page_Delete"],
+  },
+  {
+    text: "팝업 관리",
+    fileName: "PopupMgmt",
+    subMenu: ["팝업 목록", "팝업 등록/수정", "팝업 삭제"],
+    subMenuFiles: ["page_List", "page_Edit", "page_Delete"],
+  },
+  {
+    text: "배치/스케줄링 관리",
+    fileName: "BatchMgmt",
+    subMenu: ["배치/스케줄링 실행 내역 조회", "배치/스케줄링 수동 실행"],
+    subMenuFiles: ["page_History", "page_Manual"],
+  },
+  {
+    text: "알림 관리",
+    fileName: "NotifyMgmt",
+    subMenu: ["알림 내용 등록", "알림 전송 내역 조회"],
+    subMenuFiles: ["page_Create", "page_History"],
+  },
+  {
+    text: "메일컨텐츠 관리",
+    fileName: "MailMgmt",
+    subMenu: [
+      "메일내용 목록",
+      "메일내용 등록",
+      "메일내용 삭제",
+      "메일 발신관리",
+    ],
+    subMenuFiles: ["page_List", "page_Create", "page_Delete", "page_Send"],
+  },
+  {
+    text: "마케팅/홍보 관련",
+    fileName: "Marketing",
+    subMenu: ["SEO", "google analytics"],
+    subMenuFiles: ["page_SEO", "page_GA"],
+  },
+  {
+    text: "승인",
+    fileName: "Approval",
+    subMenu: null, // 2 Depth가 없으면 바로 페이지 로드
+  },
+  {
+    text: "이미지 관리",
+    fileName: "ImgMgmt",
+    subMenu: null, // 2 Depth가 없으면 바로 페이지 로드
+  },
+]);
+
+const handleMenuClick = (index, item) => {
+  activeIndex.value = activeIndex.value === index ? null : index;
+  activeSubIndex.value = null;
+  selectedSubMenu.value = null;
+  selectedSubSubMenu.value = null;
+
+  if (!item.subMenu) {
+    emit("update-content", {
+      folderName: item.fileName,
+      componentName: item.fileName,
     });
-  },
-  methods: {
-    /**
-     * 1 Depth 메뉴 클릭 시 동작
-     * @param {Number} index - 클릭한 메뉴의 인덱스
-     * @param {Object} item - 선택한 메뉴 객체
-     */
-    handleMenuClick(index, item) {
-      if (item.subMenu) {
-        this.activeIndex = this.activeIndex === index ? null : index; // 🔹 메뉴 열고 닫기
-      } else {
-        this.activeIndex = index;
-        this.selectedSubMenu = null; // 🔹 2 Depth 선택 해제
-        this.$emit("update-content", {
-          folderName: item.fileName,
-          componentName: item.fileName,
-        });
-      }
-    },
-
-    /**
-     * 2 Depth 메뉴 클릭 시 동작
-     * @param {String} subItem - 선택한 서브 메뉴명
-     * @param {String} fileName - 해당하는 Vue 파일명
-     * @param {String} parentFileName - 1 Depth의 fileName (폴더명)
-     */
-    handleSubMenuClick(subItem, fileName, parentFileName) {
-      this.selectedSubMenu = subItem; // 🔹 현재 선택된 2 Depth 메뉴 저장
-      this.$emit("update-content", {
-        folderName: parentFileName,
-        componentName: fileName,
-      });
-    },
-  },
+  }
 };
+
+const handleSubMenuClick = (subItem, item, subIndex) => {
+  if (selectedSubMenu.value === subItem) {
+    selectedSubMenu.value = null;
+    activeSubIndex.value = null;
+    selectedSubSubMenu.value = null;
+  } else {
+    selectedSubMenu.value = subItem;
+    activeSubIndex.value = subIndex;
+    selectedSubSubMenu.value = null;
+  }
+
+  if (!item.subSubMenu || !item.subSubMenu[subIndex]) {
+    emit("update-content", {
+      folderName: item.fileName,
+      componentName: item.subMenuFiles[subIndex],
+    });
+  }
+};
+
+const handleSubSubMenuClick = (subSubItem, item, subIndex, subSubIndex) => {
+  selectedSubSubMenu.value = subSubItem;
+
+  emit("update-content", {
+    folderName: item.fileName,
+    componentName: item.subSubMenuFiles[subIndex][subSubIndex],
+  });
+};
+
+// ✅ 페이지를 나갔다가 돌아오면 기본 페이지 설정
+onMounted(() => {
+  const defaultFolder = "SysMgmt";
+  const defaultComponent = "page_Admin";
+  activeIndex.value = navItems.value.findIndex(
+    (item) => item.fileName === defaultFolder
+  );
+  selectedSubMenu.value = "관리자 관리";
+  emit("update-content", {
+    folderName: defaultFolder,
+    componentName: defaultComponent,
+  });
+});
 </script>
 
 <style scoped>
@@ -310,5 +360,24 @@ export default {
 
 .btn-cover {
   margin: 21px 0px 0px 27px;
+}
+
+/* 3 Depth 스타일 추가 */
+.sub-sub-nav-items {
+  list-style-type: none;
+}
+
+.sub-sub-nav-link {
+  color: var(--fontbk-color);
+  font-size: var(--font-size-small);
+  padding: 9px 38px;
+  display: block;
+  transition: background-color 0.2s;
+}
+
+.sub-sub-nav-link.sub-sub-active {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  font-weight: bold;
 }
 </style>

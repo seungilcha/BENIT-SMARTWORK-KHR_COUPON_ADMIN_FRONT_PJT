@@ -2,13 +2,13 @@
   <div class="page-container">
     <h1>홈 페이지</h1>
     <p>1</p>
+    <ContentArea
+      :folderName="'components/pages/SysMgmt'"
+      :componentName="'page_AdminMenu'"
+    />
   </div>
 </template>
 
-<script>
-export default {
-  name: "SysMgmtAdminMenu",
-};
-</script>
+<script setup></script>
 
 <style scoped></style>

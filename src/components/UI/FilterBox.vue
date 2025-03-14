@@ -1,13 +1,14 @@
 <template>
   <div class="filter-container">
     <div class="filter-header">
-      <h4>검색 필터</h4>
-      <!-- 🔹 버튼 그룹이 비어 있어도 div는 유지 -->
+      <h4>{{ title }}</h4>
+      <!-- 📌 동적으로 변경 가능하도록 title 사용 -->
       <div class="button-group">
         <BaseButton
           v-for="(button, index) in filterButtons"
           :key="index"
           :type="button.type"
+          :size="button.size"
           :class="button.class"
           @click="handleClick(button)"
         >
@@ -17,16 +18,6 @@
     </div>
 
     <div class="filter-box">
-      <!-- 🔹 날짜 범위 입력 -->
-      <BaseDateRange
-        label="최종 접속일"
-        :startDate="startDate"
-        :endDate="endDate"
-        @update:startDate="startDate = $event"
-        @update:endDate="endDate = $event"
-      />
-
-      <!-- 🔹 filters가 존재하지 않아도 기본 구조 유지 -->
       <BaseInput
         v-for="(filter, index) in filters"
         :key="index"
@@ -40,36 +31,25 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { toRefs, defineProps, defineEmits } from "vue";
 import BaseButton from "./BaseButton.vue";
 import BaseInput from "./BaseInput.vue";
-import BaseDateRange from "./BaseDateRange.vue"; // 날짜 범위 입력 추가
 
-export default {
-  name: "FilterBox",
-  components: { BaseButton, BaseInput, BaseDateRange },
-  data() {
-    return {
-      startDate: "",
-      endDate: "",
-    };
-  },
-  props: {
-    filters: {
-      type: Array,
-      default: () => [], // 🔹 기본값을 빈 배열로 설정
-    },
-    filterButtons: {
-      type: Array,
-      default: () => [], // 🔹 기본값을 빈 배열로 설정
-    },
-  },
-  methods: {
-    handleClick(button) {
-      console.log(`${button.label} 버튼 클릭됨!`);
-      this.$emit("filter-action", button);
-    },
-  },
+const props = defineProps({
+  title: { type: String, required: true },
+  filterButtons: Array,
+  filters: Array,
+  startDate: String, // ✅ startDate를 props에서 받도록 수정
+  endDate: String, // ✅ endDate를 props에서 받도록 수정
+});
+// toRefs() 사용하여 반응형 유지
+const { filterButtons, filters } = toRefs(props);
+
+const emit = defineEmits(["filter-click"]);
+
+const handleClick = (button) => {
+  emit("filter-click", button);
 };
 </script>
 
@@ -84,13 +64,6 @@ export default {
   align-items: center;
   margin-bottom: 13px;
   padding-right: 10px;
-}
-
-/* 버튼 간격 조정 */
-.button-group {
-  display: flex;
-  gap: 10px;
-  min-height: 32px; /* 🔹 버튼이 없을 때도 레이아웃 유지 */
 }
 
 /* 검색 필터 타이틀 스타일 */

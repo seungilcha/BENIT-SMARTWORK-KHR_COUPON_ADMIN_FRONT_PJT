@@ -1,6 +1,5 @@
 <template>
   <header class="header">
-    <!-- 왼쪽 링크 + 로고 -->
     <div class="left-section">
       <a href="#" class="link-area">
         <svg
@@ -10,41 +9,25 @@
           viewBox="0 0 16 15"
           fill="none"
         >
-          <rect
-            x="0.799999"
-            y="0.800049"
-            width="14.4"
-            height="1.44"
-            fill="white"
-          />
-          <rect
-            x="0.799999"
-            y="6.80005"
-            width="14.4"
-            height="1.44"
-            fill="white"
-          />
-          <rect x="0.799999" y="12.8" width="14.4" height="1.44" fill="white" />
+          <rect x="0.8" y="0.8" width="14.4" height="1.44" fill="white" />
+          <rect x="0.8" y="6.8" width="14.4" height="1.44" fill="white" />
+          <rect x="0.8" y="12.8" width="14.4" height="1.44" fill="white" />
         </svg>
       </a>
 
-      <!-- 로고 -->
       <h1 class="logo">
         <a href="/" @click.prevent="goToHome">Logo 영역</a>
       </h1>
     </div>
 
-    <!-- 중앙 검색 영역 -->
     <div class="search-box">
       <input
         type="text"
         v-model="searchQuery"
         placeholder="검색어를 입력하세요."
         class="search-input"
-        :style="{ color: searchQuery ? '#ffffff' : '#C2C2C2' }"
-        @keyup.enter="handleSearch"
       />
-      <button class="search-button" @click="handleSearch">
+      <button @click="search" class="search-btn">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -67,25 +50,17 @@
   </header>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      searchQuery: "",
-    };
-  },
-  methods: {
-    handleSearch() {
-      if (this.searchQuery.trim()) {
-        console.log(`검색어: ${this.searchQuery}`);
-      } else {
-        alert("검색어를 입력해주세요.");
-      }
-    },
-    goToHome() {
-      window.location.href = "/"; // 최상위 페이지로 이동
-    },
-  },
+<script setup>
+import { ref } from "vue";
+
+const searchQuery = ref("");
+
+const goToHome = () => {
+  window.location.href = "/";
+};
+
+const search = () => {
+  console.log("검색 실행:", searchQuery.value);
 };
 </script>
 

@@ -1,14 +1,14 @@
 <template>
   <div class="page-container">
     <h1>홈 페이지</h1>
-    <p>4</p>
+    <p>13</p>
+    <ContentArea
+      :folderName="'components/pages/SysMgmt'"
+      :componentName="'page_Logs'"
+    />
   </div>
 </template>
 
-<script>
-export default {
-  name: "SysMgmtLogs",
-};
-</script>
+<script setup></script>
 
 <style scoped></style>

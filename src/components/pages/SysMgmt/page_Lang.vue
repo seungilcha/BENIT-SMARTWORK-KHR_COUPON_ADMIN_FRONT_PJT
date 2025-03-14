@@ -1,14 +1,14 @@
 <template>
   <div class="page-container">
     <h1>홈 페이지</h1>
-    <p>3</p>
+    <p>12</p>
+    <ContentArea
+      :folderName="'components/pages/SysMgmt'"
+      :componentName="'page_Lang'"
+    />
   </div>
 </template>
 
-<script>
-export default {
-  name: "SysMgmtLang",
-};
-</script>
+<script setup></script>
 
 <style scoped></style>

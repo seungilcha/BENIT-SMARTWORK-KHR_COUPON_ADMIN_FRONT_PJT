@@ -167,3 +167,8 @@ img {
 .mr-10 {
   margin-right: 10px;
 }
+/* 버튼 간격 조정 */
+.button-group {
+  display: flex;
+  gap: 10px;
+}

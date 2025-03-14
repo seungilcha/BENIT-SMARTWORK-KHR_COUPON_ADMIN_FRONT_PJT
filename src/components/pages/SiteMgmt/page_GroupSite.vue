@@ -1,14 +1,14 @@
 <template>
   <div class="page-container">
     <h1>홈 페이지</h1>
-    <p>6</p>
+    <p>1</p>
+    <ContentArea
+      :folderName="'components/pages/SiteMgmt'"
+      :componentName="'page_GroupSite'"
+    />
   </div>
 </template>
 
-<script>
-export default {
-  name: "SiteMgmtGroupSite",
-};
-</script>
+<script setup></script>
 
 <style scoped></style>

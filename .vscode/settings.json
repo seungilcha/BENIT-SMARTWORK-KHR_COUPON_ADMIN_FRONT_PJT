@@ -18,5 +18,12 @@
     "html",
     "vue",
     "markdown"
-  ]
+  ],
+  "vetur.format.defaultFormatter.html": "prettier",
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      "printWidth": 100,
+      "singleQuote": true
+    }
+  }
 }
