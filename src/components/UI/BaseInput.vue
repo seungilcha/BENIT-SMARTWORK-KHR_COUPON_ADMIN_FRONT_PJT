@@ -41,6 +41,53 @@
             d="M0 2.5C0 1.39543 0.895431 0.5 2 0.5H14C15.1046 0.5 16 1.39543 16 2.5V5.5H0V2.5Z"
             fill="#1C1C1C"
           />
+          <rect x="5.7998" y="6.7998" width="1.5" height="1.5" fill="#1C1C1C" />
+          <rect x="5.7998" y="9.7998" width="1.5" height="1.5" fill="#1C1C1C" />
+          <rect
+            x="5.7998"
+            y="12.7998"
+            width="1.5"
+            height="1.5"
+            fill="#1C1C1C"
+          />
+          <rect x="2.7998" y="9.7998" width="1.5" height="1.5" fill="#1C1C1C" />
+          <rect
+            x="2.7998"
+            y="12.7998"
+            width="1.5"
+            height="1.5"
+            fill="#1C1C1C"
+          />
+          <rect x="8.7998" y="6.7998" width="1.5" height="1.5" fill="#1C1C1C" />
+          <rect x="8.7998" y="9.7998" width="1.5" height="1.5" fill="#1C1C1C" />
+          <rect
+            x="8.7998"
+            y="12.7998"
+            width="1.5"
+            height="1.5"
+            fill="#1C1C1C"
+          />
+          <rect
+            x="11.7998"
+            y="6.7998"
+            width="1.5"
+            height="1.5"
+            fill="#1C1C1C"
+          />
+          <rect
+            x="11.7998"
+            y="9.7998"
+            width="1.5"
+            height="1.5"
+            fill="#1C1C1C"
+          />
+          <rect
+            x="11.7998"
+            y="12.7998"
+            width="1.5"
+            height="1.5"
+            fill="#1C1C1C"
+          />
         </svg>
       </span>
     </div>
@@ -82,6 +129,83 @@
               d="M0 2.5C0 1.39543 0.895431 0.5 2 0.5H14C15.1046 0.5 16 1.39543 16 2.5V5.5H0V2.5Z"
               fill="#1C1C1C"
             />
+            <rect
+              x="5.7998"
+              y="6.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="5.7998"
+              y="9.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="5.7998"
+              y="12.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="2.7998"
+              y="9.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="2.7998"
+              y="12.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="8.7998"
+              y="6.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="8.7998"
+              y="9.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="8.7998"
+              y="12.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="11.7998"
+              y="6.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="11.7998"
+              y="9.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="11.7998"
+              y="12.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
           </svg>
         </span>
       </div>
@@ -119,6 +243,83 @@
             />
             <path
               d="M0 2.5C0 1.39543 0.895431 0.5 2 0.5H14C15.1046 0.5 16 1.39543 16 2.5V5.5H0V2.5Z"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="5.7998"
+              y="6.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="5.7998"
+              y="9.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="5.7998"
+              y="12.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="2.7998"
+              y="9.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="2.7998"
+              y="12.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="8.7998"
+              y="6.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="8.7998"
+              y="9.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="8.7998"
+              y="12.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="11.7998"
+              y="6.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="11.7998"
+              y="9.7998"
+              width="1.5"
+              height="1.5"
+              fill="#1C1C1C"
+            />
+            <rect
+              x="11.7998"
+              y="12.7998"
+              width="1.5"
+              height="1.5"
               fill="#1C1C1C"
             />
           </svg>

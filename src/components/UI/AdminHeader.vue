@@ -1,7 +1,7 @@
 <template>
   <div class="sub-header">
     <h1>{{ props.title }}</h1>
-    <div v-if="buttons.length > 0" class="button-group">
+    <div v-if="buttons?.length > 0" class="button-group">
       <BaseButton
         v-for="(button, index) in buttons"
         :key="index"

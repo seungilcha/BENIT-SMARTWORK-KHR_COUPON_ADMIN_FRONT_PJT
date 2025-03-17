@@ -177,6 +177,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: -5px;
 }
 .button-text {
   display: flex;

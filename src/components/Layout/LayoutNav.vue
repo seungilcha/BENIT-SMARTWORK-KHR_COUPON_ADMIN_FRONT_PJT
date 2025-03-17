@@ -110,6 +110,7 @@ const navItems = ref([
     fileName: "SysMgmt",
     subMenu: [
       "관리자 관리",
+      "관리자 등록",
       "관리자 메뉴 관리",
       "로그관리",
       "게시판 관리",
@@ -117,6 +118,7 @@ const navItems = ref([
     ],
     subMenuFiles: [
       "page_Admin",
+      "page_Detail",
       "page_AdminMenu",
       "page_Logs",
       "page_Board",
@@ -299,6 +301,7 @@ onMounted(() => {
   list-style-type: none;
   padding: 0;
   width: 100%;
+  cursor: pointer;
 }
 
 .nav-item {

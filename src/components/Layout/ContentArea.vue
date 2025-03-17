@@ -1,8 +1,6 @@
 <template>
-  <div class="content-area">
-    <!-- 📌 동적으로 로드된 컴포넌트 표시 -->
-    <component :is="currentComponent" v-if="currentComponent" />
-  </div>
+  <!-- 📌 동적으로 로드된 컴포넌트 표시 -->
+  <component :is="currentComponent" v-show="currentComponent !== null" />
 </template>
 
 <script setup>
@@ -17,11 +15,12 @@ import {
 const props = defineProps(["folderName", "componentName"]);
 const currentComponent = shallowRef(null);
 
-const modules = import.meta.glob("/src/components/pages/**/*.vue");
+const modules = import.meta.glob("/src/components/pages/**/*.vue"); // 절대 경로 사용
 
 const loadComponent = async (folder, component) => {
   if (!folder || !component) return;
 
+  // ✅ `import.meta.glob()`에서 로드할 때 올바른 경로를 만들어야 함
   const filePath = `/src/components/pages/${folder}/${component}.vue`;
 
   if (modules[filePath]) {
