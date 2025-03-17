@@ -28,6 +28,7 @@
   }
   {
     "vetur.validation.template": false,
-    "vue.compilerOptions.experimentalDisableTemplateSupport": true
+    "vue.compilerOptions.experimentalDisableTemplateSupport": true,
+    "vetur.validation.script": false
   }
 }
