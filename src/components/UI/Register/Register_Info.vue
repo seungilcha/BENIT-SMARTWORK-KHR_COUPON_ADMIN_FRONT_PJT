@@ -64,7 +64,6 @@ import { defineProps, defineEmits, ref } from "vue";
 import BaseButton from "../BaseButton.vue";
 import BaseTextarea from "../BaseTextarea.vue";
 import BaseRadio from "../BaseRadio.vue";
-import AdminSearchPopup from "../popup/AdminSearchPopup.vue";
 
 const props = defineProps({
   title: { type: String, required: true }, // 🔹 제목을 props로 받음
@@ -74,25 +73,14 @@ const props = defineProps({
     default: () => [],
   },
 });
-const isPopupOpen = ref(false); // ✅ 팝업 상태 추가
+
 const emit = defineEmits(["button-click"]);
 const remark = ref("");
 const usageStatus = ref("active"); // ✅ "사용 여부" 선택값
 const authStatus = ref("unverified"); // ✅ "로그인 2차 인증 여부" 선택값
 
-// ✅ 버튼 클릭 시 이벤트 & 팝업 열기
 const handleClick = (button) => {
-  emit("button-click", button); // 기존 emit 이벤트 유지
-
-  // ✅ "관리자 검색" 버튼 클릭 시 팝업 열기
-  if (button.label === "관리자 검색") {
-    isPopupOpen.value = true;
-  }
-};
-
-// ✅ 팝업 닫기
-const closePopup = () => {
-  isPopupOpen.value = false;
+  emit("button-click", button);
 };
 </script>
 
