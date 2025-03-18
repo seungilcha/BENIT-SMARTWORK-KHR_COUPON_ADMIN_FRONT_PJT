@@ -15,8 +15,6 @@
         />
       </div>
     </div>
-    <!-- ✅ AdminSearchPopup 팝업 추가 -->
-    <AdminSearchPopup v-if="isPopupOpen" @close="closePopup" />
     <div class="body-cont">
       <dl>
         <dt>회사</dt>

@@ -11,6 +11,7 @@
             :buttons="registerInfoButtons"
             @button-click="onRegisterInfoButtonClick"
           />
+          <AdminSearchPopup v-if="isPopupOpen" @close="closePopup" />
         </div>
         <div class="register_modifier">
           <RegisterModifier title="최종 수정자 정보" />
@@ -36,12 +37,13 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import AdminHeader from "../../UI/AdminHeader.vue";
 import BaseButton from "../../UI/BaseButton.vue";
 import RegisterInfo from "../../UI/Register/Register_Info.vue";
 import RegisterModifier from "../../UI/Register/Register_Modifier.vue";
 import RegisterPrivilege from "../../UI/Register/Register_Privilege.vue";
+import AdminSearchPopup from "../../UI/popup/AdminSearchPopup.vue";
 
 // 헤더 버튼 정의
 const HeaderButtons = computed(() => [
@@ -55,6 +57,21 @@ const HeaderButtons = computed(() => [
 const registerInfoButtons = computed(() => [
   { label: "관리자 검색", type: "default", size: "small" },
 ]);
+
+// ✅ "관리자 검색" 팝업 상태 관리
+const isPopupOpen = ref(false);
+
+// ✅ 버튼 클릭 시 실행
+const onRegisterInfoButtonClick = (button) => {
+  if (button.label === "관리자 검색") {
+    isPopupOpen.value = true; // 팝업 열기
+  }
+};
+
+// ✅ 팝업 닫기 이벤트
+const closePopup = () => {
+  isPopupOpen.value = false; // 팝업 닫기
+};
 </script>
 
 <style scoped>
