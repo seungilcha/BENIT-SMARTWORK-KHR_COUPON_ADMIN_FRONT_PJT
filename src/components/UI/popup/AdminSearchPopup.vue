@@ -186,11 +186,15 @@ const closePopup = () => {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  flex: 1;
 }
 .table-content-popup {
   height: 249px;
   overflow-y: auto;
   border: 1px solid var(--lineStroke-color);
   background-color: var(--secondary-color);
+}
+.select-wrapper {
+  flex: 1;
 }
 </style>
