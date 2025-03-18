@@ -87,6 +87,7 @@ td {
   padding: 12px;
   text-align: left;
   border-top: 1px solid var(--lineStroke-color);
+  background-color: var(--white-color);
 }
 
 .button-group {
@@ -102,5 +103,8 @@ td {
   color: var(
     --GrayHintText-color
   ) !important; /* 🔴 "미사용"이 포함된 행의 텍스트 색상을 빨간색으로 변경 */
+}
+.no-data {
+  text-align: center;
 }
 </style>
